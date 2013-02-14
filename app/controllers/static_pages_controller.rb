@@ -1,5 +1,11 @@
 class StaticPagesController < ApplicationController
-  def home
+  def about
+  end
+
+  def projects
+  end
+
+  def artwork
   end
 
   def calendar
