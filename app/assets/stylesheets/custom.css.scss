@@ -3,6 +3,9 @@
 /* mixins, variables, etc. */
 
 $grayMediumLight: #eaeaea;
+$grayVeryLight: #f0f0f0;
+$grayMedium: #aaaaaa;
+$grayMediumDark: #808080;
 
 @mixin box_sizing {
 -moz-box-sizing: border-box; 
@@ -34,6 +37,7 @@ resize: vertical;
     margin-bottom: 10px;
   }
 }
+
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
@@ -62,6 +66,18 @@ line-height: 1.7em;
 
 /* header */
 
+div.header {
+  a { color:$grayMedium; }
+  a:hover { color:$grayLight; text-decoration:none;}
+}
+
+div.title {
+  h1 {
+    font-size: 7.0em;
+    font-family:"Times New Roman", Times, serif;
+    color: $grayVeryLight;
+  }
+}
 
 /* footer */
 
