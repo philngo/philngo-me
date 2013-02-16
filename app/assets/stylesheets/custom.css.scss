@@ -3,7 +3,7 @@
 /* mixins, variables, etc. */
 
 $grayMediumLight: #eaeaea;
-$grayVeryLight: #f0f0f0;
+$grayVeryLight: #dddddd;
 $grayMedium: #aaaaaa;
 $grayMediumDark: #808080;
 
@@ -24,11 +24,11 @@ body {
 }
 
 section {
-overflow: auto;
+  overflow: auto;
 }
 
 textarea {
-resize: vertical;
+  resize: vertical;
 }
 
 .center {
@@ -45,27 +45,27 @@ img {
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
-line-height: 1;
+  line-height: 1;
 }
 
 h1 {
-font-size: 3em;
-letter-spacing: -2px;
-margin-bottom: 30px;
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
 }
 
 h2 {
-font-size: 1.7em;
-letter-spacing: -1px;
-margin-bottom: 30px;
-text-align: center;
-font-weight: normal;
-color: $grayLight;
+  font-size: 1.7em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: $grayLight;
 }
 
 p {
-font-size: 1.1em;
-line-height: 1.7em;
+  font-size: 1.1em;
+  line-height: 1.7em;
 }
 
 /* header */
@@ -113,11 +113,11 @@ footer {
 /* miscellaneous */
 
 .debug_dump {
-clear: both;
-float: left;
-width: 100%;
-margin-top: 45px;
-@include box_sizing;
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
 }
 
 /* sidebar */
