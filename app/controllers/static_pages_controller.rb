@@ -10,4 +10,7 @@ class StaticPagesController < ApplicationController
 
   def calendar
   end
+
+  def collection
+  end
 end
