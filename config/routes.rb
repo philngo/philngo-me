@@ -6,4 +6,5 @@ PhilngoMe::Application.routes.draw do
   match '/photography', to: 'static_pages#photography'
   match '/calendar', to: 'static_pages#calendar'
   match '/collection', to: 'static_pages#collection'
+  match '/bugs', to: 'static_pages#bugs'
 end

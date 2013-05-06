@@ -8,6 +8,9 @@ class StaticPagesController < ApplicationController
   def artwork
   end
 
+  def bugs
+  end
+
   def calendar
   end
 
