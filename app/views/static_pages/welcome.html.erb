@@ -1,0 +1,59 @@
+<% content_for :head do %>
+<style>
+html body {
+    margin: 0;
+    padding: 0;
+    background: black;
+}
+</style>
+<% end %>
+
+<canvas id="processing-canvas"></canvas>
+
+<script id="sketch" type="application/processing" data-processing-target="processing-canvas">
+/* @pjs preload = '<%= asset_path "name.png" %>'; */
+
+PImage name;
+float click_time;
+float start_time;
+
+void setup() {
+  size(window.innerWidth, window.innerHeight);
+  background(0);
+
+  name = loadImage("<%= asset_path 'name.png' %>");
+  imageMode(CENTER);
+  frameRate(24);
+  click_time = 0;
+  start_time = millis();
+}
+
+void draw() {
+
+  if (click_time - start_time > 1000) {
+    link("<%= about_url %>");
+    noLoop();
+  }
+
+  //background(120,0);
+
+  float sd = width/6;
+  float mean = width/2;
+  float x = ( randomGaussian() * sd ) + mean;
+  float r = ( randomGaussian() * 10 ) + 150;
+
+  noStroke();
+  fill(255, 5);
+  noStroke();
+  ellipse(x, height/2, r, r);   // Draw an ellipse at our "normal" random location
+  tint(0, 0, 0, 2);
+  image(name,width/2,height/2);
+
+
+}
+
+void mousePressed() {
+  click_time = millis();
+}
+
+</script>

@@ -98,4 +98,8 @@ class StaticPagesController < ApplicationController
 
   def collection
   end
+
+  def welcome
+    render 'welcome', layout: 'full_page_processing'
+  end
 end

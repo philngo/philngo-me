@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> <%= full_title(yield(:title)) %></title>
+<%= yield(:head) %>
+<%= javascript_include_tag "application" %>
+<%= csrf_meta_tags %>
+</head>
+<body>
+  <%= yield %>
+</div>
+</body>
+</html>
