@@ -1,12 +1,50 @@
-<div class="center">
-  <div class="span3">
+<div class="container">
+  <div class="row-fluid">
+  <div class="col-md-2">
     <h2>Links</h2>
     <p>
-      <%= link_to "Colossal", "http://www.thisiscolossal.com"%>
+      <ul>
+      <li><%= link_to "Colossal", "http://www.thisiscolossal.com"%></li>
+      <li><%= link_to "Hacker News", "https://news.ycombinator.com"%></li>
+      </ul>
     </p>
   </div>
-  <div class="span6">
+  <div class="col-md-8">
     <h2>Useful</h2>
+    <h4>iPython boilerplate</h4>
+    <p>
+      <pre>
+%matplotlib inline
+
+import numpy as np
+
+import matplotlib.pyplot as plt
+from matplotlib import rcParams
+import pdb
+
+# imports for showing images
+from IPython.core.display import Image
+
+#these colors come from colorbrewer2.org. Each is an RGB triplet
+dark2_colors = [(0.10588235294117647, 0.6196078431372549, 0.4666666666666667),
+                (0.8509803921568627, 0.37254901960784315, 0.00784313725490196),
+                (0.4588235294117647, 0.4392156862745098, 0.7019607843137254),
+                (0.9058823529411765, 0.1607843137254902, 0.5411764705882353),
+                (0.4, 0.6509803921568628, 0.11764705882352941),
+                (0.9019607843137255, 0.6705882352941176, 0.00784313725490196),
+                (0.6509803921568628, 0.4627450980392157, 0.11372549019607843),
+                (0.4, 0.4, 0.4)]
+
+rcParams['figure.figsize'] = (10, 6)
+rcParams['figure.dpi'] = 150
+rcParams['axes.color_cycle'] = dark2_colors
+rcParams['lines.linewidth'] = 2
+rcParams['axes.grid'] = False
+rcParams['axes.facecolor'] = 'white'
+rcParams['font.size'] = 14
+rcParams['patch.edgecolor'] = 'none'
+      </pre>
+    </p>
     <p>
       <a href=http://cleardarksky.com/c/Bostonkey.html>
       <img src="http://cleardarksky.com/c/Bostoncsk.gif?c=1414829"></a>
@@ -14,12 +52,13 @@
     <h2>Deprecated</h2>
     <%= image_tag "venn.png" %>
   </div>
-  <div class="span3">
+  <div class="col-md-2">
     <table>
       <tr>
         <td>
-          <a href="https://twitter.com/philmngo" class="twitter-follow-button"
-            data-show-count="false">Follow @philmngo</a>
+          <a href="https://twitter.com/philmngo"
+              class="twitter-follow-button"
+              data-show-count="false">Follow @philmngo</a>
           <script>!function(d,s,id){
             var js,fjs=d.getElementsByTagName(s)[0];
             if(!d.getElementById(id)){
@@ -60,5 +99,6 @@
         <td/>
       <tr/>
     </table>
+  </div>
   </div>
 </div>
