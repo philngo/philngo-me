@@ -96,9 +96,6 @@ class StaticPagesController < ApplicationController
   def bugs
   end
 
-  def calendar
-  end
-
   def collection
   end
 end
