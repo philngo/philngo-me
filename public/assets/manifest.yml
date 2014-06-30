@@ -27,6 +27,8 @@ bugs/seabug.png: bugs/seabug-2cb097b790790feac6f7f3a0a32a7c8c.png
 bugs/seabug/index.png: bugs/seabug-2cb097b790790feac6f7f3a0a32a7c8c.png
 bugs/whitebug.jpg: bugs/whitebug-f244d2023cb107ba8cd32ca17811cac6.jpg
 bugs/whitebug/index.jpg: bugs/whitebug-f244d2023cb107ba8cd32ca17811cac6.jpg
+name.png: name-72e73c6c1de56179917af33387f5079b.png
+name/index.png: name-72e73c6c1de56179917af33387f5079b.png
 philngo.png: philngo-10e4882d187b2ad731d2fd7244f15998.png
 philngo/index.png: philngo-10e4882d187b2ad731d2fd7244f15998.png
 photography/bells.png: photography/bells-b112f71693f17096439931e9d4366896.png
@@ -57,12 +59,10 @@ projectthumbs/sphero140.png: projectthumbs/sphero140-29223d6aff7eee2a66e3f009b8f
 projectthumbs/sphero140/index.png: projectthumbs/sphero140-29223d6aff7eee2a66e3f009b8fe7c2e.png
 projectthumbs/whatsthatword140.png: projectthumbs/whatsthatword140-286c1d0a7eb61071ad593cc6179a452a.png
 projectthumbs/whatsthatword140/index.png: projectthumbs/whatsthatword140-286c1d0a7eb61071ad593cc6179a452a.png
-venn.png: venn-32a166d86224f20d47be3d0efbeff023.png
-venn/index.png: venn-32a166d86224f20d47be3d0efbeff023.png
-application.js: application-a62c5060a52d4684738a5cf2ab1d4b11.js
-application/index.js: application-a62c5060a52d4684738a5cf2ab1d4b11.js
-application.css: application-6a4427a8cea1438f5f1895cb34bad9e9.css
-application/index.css: application-6a4427a8cea1438f5f1895cb34bad9e9.css
+application.js: application-5bd37b955e6f553d17a86d58f2f64eb7.js
+application/index.js: application-5bd37b955e6f553d17a86d58f2f64eb7.js
+application.css: application-b7d7317ba7f532a6b8af6d1724f84c19.css
+application/index.css: application-b7d7317ba7f532a6b8af6d1724f84c19.css
 bootstrap/glyphicons-halflings-regular.eot: bootstrap/glyphicons-halflings-regular-e76f5a754ccf64843a118a8706df3f8c.eot
 bootstrap/glyphicons-halflings-regular/index.eot: bootstrap/glyphicons-halflings-regular-e76f5a754ccf64843a118a8706df3f8c.eot
 bootstrap/glyphicons-halflings-regular.svg: bootstrap/glyphicons-halflings-regular-8a0a941aafb8c48e709ca72675344c92.svg
