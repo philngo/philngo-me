@@ -3,7 +3,7 @@
     <li><b><%= link_to "home", about_path %></b></li>
     <li><b><%= link_to "projects", projects_path %></b></li>
     <li><b><%= link_to "all posts", blog_index_path %></b></li>
-    <% ["bezier", "intro"].each do |p| %>
+    <% @posts.each do |p| %>
       <li><%= link_to p, blog_path(p), class: "sidebar_link" %></li>
     <% end %>
   </ul>
