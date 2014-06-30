@@ -9,47 +9,91 @@ html body {
 <% end %>
 
 <canvas id="processing-canvas"></canvas>
-
 <script id="sketch" type="application/processing" data-processing-target="processing-canvas">
-/* @pjs preload = '<%= asset_path "name.png" %>'; */
+/* @pjs preload="<%= asset_path 'name.png' %>"; */
 
 PImage name;
 float click_time;
 float start_time;
+int x_,y_;
 
 void setup() {
   size(window.innerWidth, window.innerHeight);
   background(0);
+  noStroke();
 
   name = loadImage("<%= asset_path 'name.png' %>");
   imageMode(CENTER);
+
+  click_time = 100000000000;
   frameRate(24);
-  click_time = 0;
-  start_time = millis();
+  x_ = mouseX;
+  y_ = mouseY;
 }
 
 void draw() {
+  // fade sceen
+  fade(50);
 
-  if (click_time - start_time > 1000) {
-    link("<%= about_url %>");
-    noLoop();
+  // follow mouse
+  if (frameCount > 10)
+    float d = dist(mouseX,mouseY,x_,y_);
+  else
+    float d = 0;
+  int t = 5 + (int) d/13;
+  for (int i = 0; i < t; i++){
+    drawMouseCircle();
   }
 
-  //background(120,0);
+  for (int i = 0; i < 8; i++) {
+    drawbgCircle();
+  }
 
+  tint(0, 0, 0, 65);
+  image(name,width/2,height/2);
+
+  x_ = mouseX;
+  y_ = mouseY;
+
+  if (millis() - click_time > 0) {
+    fade((millis() - click_time)/8);
+    if (millis() - click_time > 1000) {
+      background(0);
+      link("<%= about_path %>");
+      noLoop();
+    }
+  }
+}
+
+void fade(int alpha) {
+  fill(0,alpha);
+  rectMode(CORNER);
+  rect(0,0,width,height);
+
+}
+
+void drawbgCircle() {
   float sd = width/6;
   float mean = width/2;
   float x = ( randomGaussian() * sd ) + mean;
-  float r = ( randomGaussian() * 10 ) + 150;
+  float r1 = ( randomGaussian() * 10 ) + 150;
 
-  noStroke();
-  fill(255, 5);
-  noStroke();
-  ellipse(x, height/2, r, r);   // Draw an ellipse at our "normal" random location
-  tint(0, 0, 0, 2);
-  image(name,width/2,height/2);
+  fill(255,10);
+  ellipse(x, height/2, r1, r1);   // Draw an ellipse at our "normal" random location
 
+}
 
+void drawMouseCircle() {
+    fill(255,2);
+    float r2 = ( randomGaussian() * 20 ) + 100;
+    float x2 = ( randomGaussian() * 70 );
+    float y2 = ( randomGaussian() * 30 );
+    ellipseMode(CENTER);
+    ellipse(x2 + mouseX, y2 + mouseY, r2, r2);   // Draw an ellipse at our "normal" random location
+}
+
+float dist(int x1, int y1, int x2, int y2) {
+  return ((x1 - x2)^2 + (y1 - y2)^2)^.5;
 }
 
 void mousePressed() {

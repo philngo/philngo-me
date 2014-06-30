@@ -8,15 +8,16 @@
 <div class="row">
   <div class="col-md-2">
   </div>
-  <div class="col-md-6">
+  <div class="col-md-7">
     <h3>Bezier explained - June 28, 2014</h3>
     <hr/>
-    Yesterday I was learning how to use "Processing", the graphical programming
-    language, and I realized that I really wanted to know how "bezier" curves work.
+    Yesterday I was learning how to use <i>Processing</i>, a graphical
+    programming library, and I rememberd that I want to know how bezier curves
+    work.
     <br/>
     <br/>
-    It turns out they're not that hard to figure out. They're defined by four
-    points, as start, an end, and two "control points". Take a look (click for
+    It turns out they're not that hard to figure out. A curve is defined by four
+    points: a start, an end, and two control points. Take a look (click for
     random examples):
     <br/>
     <br/>
@@ -98,7 +99,7 @@ void explainBezier(Point p1, Point p2, Point p3, Point p4,float p) {
 
 Point linearInterpolate(Point p1, Point p2, float p) {
   int x =  (int) ((float) p1.x * (1-p) + (float) p2.x * p);
-  int y =  (int) ((float) p1.y * (1-p) + (float) p2.y * p); 
+  int y =  (int) ((float) p1.y * (1-p) + (float) p2.y * p);
   return new Point(x,y);
 }
 
@@ -111,16 +112,31 @@ void mousePressed() {
     </script>
     <br/>
     <br/>
-    It turns out there's nothing tricky going on at all. WYSIWYG: The curve is
-    defined by a sequence of proportionally divided line segments. Draw three line
-    line segments between the end points and control points. Pick a proportion, and
-    draw points on those line segments at that proportion. Draw two more line
-    segments between your three new points and divide using the same proportion.
-    Connect your final two points. The bezier curve is tangent to the point at that
-    same proportion along a line segment containing the final two points.
+    Slide your cursor left and right to the parameterization in action. Each
+    curve is defined by a sequence of proportionally divided line segments.
+    This is one way to geometrically construct the curve at a particular point:
+    <br/>
+    <br/>
+    <ol>
+      <li> Pick a proportion <i>p</i>. </li>
+      <li> Draw three line segments connecting control points in order from the
+      start point, to the first control point, to the second control point, to
+      the end point.
+      </li>
+      <li> Starting from one end, draw points on those line segments at the
+      proportion <i>p</i>.</li>
+      <li> Again, draw two more line segments between those three new points
+      and divide them at two new points using <i>p</i>.</li>
+      <li> Finally, connect the two newest points, and draw a final point on
+      that line segment at <i>p</i>.</li>
+    </ol>
+    The bezier curve is tangent to the final point. By dividing into an
+    arbitrary number of proportions, the curve can be approximated to arbitrary
+    precision.
+    <br/>
     <br/>
     <br/>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-3">
   </div>
 </div>
