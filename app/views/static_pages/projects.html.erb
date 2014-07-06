@@ -1,11 +1,11 @@
 <div class="row-fluid">
-  <div class="col-md-2">
+  <div class="col-md-1">
   </div>
-  <div class="col-md-8">
+  <div class="col-md-10">
     <% @topics.each do |topic| %>
       <%= render "project_panel", :title=>topic.title, :projects => topic.projects %>
     <% end %>
   </div>
-  <div class="col-md-2">
+  <div class="col-md-1">
   </div>
 </div>
