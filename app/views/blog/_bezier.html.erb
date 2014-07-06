@@ -1,11 +1,12 @@
 <hr/>
 <h3>Bezier explained - June 28, 2014</h3>
 <hr/>
+<p>
 Yesterday I was learning how to use <i>Processing</i>, a graphical
 programming library, and I remembered that for a while now, I have wanted to
 know how bezier curves work.
-<br/>
-<br/>
+</p>
+<p>
 I was pleasantly surprised when I looked them up. It turns out they're not that
 hard to figure out. A cubic bezier curve is defined by four
 points: a start, an end, and two control points. (It's cubic precisely
@@ -13,8 +14,8 @@ points: a start, an end, and two control points. (It's cubic precisely
 it's defined by four points, just like a cubic polynomial. A quadratic bezier
 curve only needs three; a linear bezier is just a line segment.) Take a look
 at this example (click for new, random examples):
-<br/>
-<br/>
+</p>
+<p>
 
 <canvas id="processing-canvas"></canvas>
 
@@ -105,13 +106,14 @@ void mousePressed() {
   p4.update((int)random(50,width - 50),(int)random(50,height - 50));
 }
 </script>
-<br/>
-<br/>
-Slide your cursor left and right to the parameterization in action. Each
-curve is defined by a sequence of proportionally divided line segments.
+</p>
+<p>
+Those sliding lines are more than decorative: they describe the
+parameterization. A curve is defined by a sequence of proportionally divided
+line segments.
 This is one way to geometrically construct the curve at a particular point:
-<br/>
-<br/>
+</p>
+<p>
 <ol>
   <li> Pick a proportion <i>p</i>. </li>
   <li> Draw three line segments connecting control points in order from the
@@ -125,9 +127,11 @@ This is one way to geometrically construct the curve at a particular point:
   <li> Finally, connect the two newest points, and draw a final point on
   that line segment at <i>p</i>.</li>
 </ol>
+</p>
+<p>
 The bezier curve is tangent to the final point. By dividing into an
 arbitrary number of proportions, the curve can be approximated to arbitrary
 precision.
-<br/>
+</p>
 <br/>
 <br/>
