@@ -1,6 +1,9 @@
 class BlogController < ApplicationController
 
-  @@posts = ["dssg-intro","bezier","intro"] # recent first
+  @@posts = ["disaggregation",
+             "dssg-intro",
+             "bezier",
+             "intro"] # recent first
 
   def index
     @posts = @@posts

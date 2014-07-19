@@ -1,0 +1,143 @@
+<hr/>
+<h3>Energy Disaggregation - July 19, 2014</h3>
+<hr/>
+<p>
+My project for DSSG is to increase energy efficiency by using smart meter data
+to do energy disaggregation. Utilities companies are installing smart meters
+in many communities around the US in order to ease the collection of energy
+usage data. This data is pretty simple; it's often just a single stream of data
+that describes average power usage, sampled once every fifteen minutes. This
+data only says <i>how much</i> energy was used, but it contains no information
+about <i>how</i> it was used. In order to harness this data to develop specific
+recommendations for individuals about how to increase their energy efficiency,
+(while decreasing their bills and easing peak hour energy usage) it would be
+very helpful to know how they currently use power.
+</p>
+<p>
+Knowing how the energy was used allows you to answer a much more interesting
+set of questions about how to increase energy efficiency, including these:
+How much energy is each appliance using actually using? Are appliances on when
+they shouldn't be? How much money would you save by turning down your
+thermostat? What is the cost of leaving your pool pump running? What would an
+ROI on a new, more efficient refrigerator be like? There is a lot of
+misinformation floating around about how to save energy. We would much prefer
+a set of targetted, data-backed recommendations.
+</p>
+<p>
+However, few people have the time, energy, or knowledge it takes to install a
+network of data-collecting kilowatt meters in their home to monitor the power
+intake of each of their appliances. We're taking a totally different approach:
+given a signal and a bunch of data about what individual appliance signals look
+like, we're developing algorithms to automatically "disaggregate" these smart
+meter signals.
+</p>
+<p>
+This can be broken down into a few more tractable subproblems, each
+of which has its own unique challenges, which I'll describe further below.
+The first of these, and perhaps the most challenging, is to take a raw,
+unlabeled signal, and detect appliance presence. Next, armed with a list of
+detected appliances, the challenge is to determine appliance states at each
+time point. The final problem is the most straightforward: given appliance
+states at each time point, reconstruct the full appliance signals.
+</p>
+<p>
+Our greatest limitation is also our greatest source of potential for success:
+a fifteen minute sampling rate. At 1/900 Hz, the data we are using have
+sampling rates far from amenable to frequency analysis. At kHz sampling
+rates, our problem would be much more straight-forward and unambiguous. Why?
+Despite fiarly stringent FCC regulations, many appliances have distinct
+high frequency "electrical pollution" traces by which they can easily be
+identified. For instance, a televisions have a very particular radio-frequency
+signature. Despite these limitations, working with fifteen minute data gives
+us at least one tremendous practical advantage: our dataset actually exists.
+</p>
+<p>
+(By the way, smart meters actually internally sample power usage at a much
+higher frequency (~1/6 Hz), but it's all summed internally before it's sent on
+to utilities companies. We would like to show power companies that it would be
+worth the investment to collect higher resolution data.)
+</p>
+<p>
+The first of the problems described above, appliance detection, can be posed as
+a binary classification problem. Given a signal of a certain length, is a
+particular appliance signal present? For certain types of appliances, this is
+easier than for others. Refrigerators, for instance, have fairly distinctive
+periodic signals. Air conditioners, often the highest power devices in a home,
+are also fairly easy to spot; however, electric vehicles can look very similar.
+Other devices, like lights or small electronic devices, the task of detection
+is simply not possible with a reasonable degree of certainty. For now, our most
+effective method is a convolutional neural network I built and trained using
+a library called <a href="http://deeplearning.net/software/pylearn2/">
+pylearn2</a>.
+</p>
+<p>
+The problem of appliance state modeling is much broader, and I prefer to break
+it down into a few subproblems. The first of these is to learn to model the
+states for a particular appliance. One useful way to think about this is in
+terms of markov chains: in particular, hidden markov models have proven quite
+helpful. We let each appliance have some number of states (say, on and off),
+which we can't directly observe, and some probabilities of transitioning
+between these states. We then make the assumption that in each of these states,
+the appliance will emit some sort of observable data with a particular
+probability, (say, the number of watts it uses in a state). Intuitively, in its
+off state, an appliance will be unlikely to be using the same amount of power
+it uses in its on state, and vice versa. We assume these emitted states to have
+gaussian distributions, although in practice this is not quite true.
+</p>
+<p>
+With a model like this, what can we determine? We have three sources of
+variability; by fixing any two of them, we can evaluate the probability of the
+third. The three sources of variability are these: the observed states, the
+hidden states, and the model parameters. This means that we have three
+potential tasks we can answer with hidden markov models:
+<ol>
+    <li>
+    Given hidden states and the model parameters, what is the probability
+    of observing a particular sequence?
+    </li>
+    <li>
+    Given hidden states and an observed sequence, what is the likelihood of
+    a particular set of parameters?
+    (Here, "likelihood" is a techical term!)
+    </li>
+    <li>
+    Given the model parameters and an observed sequence, what is the
+    probability of a particular sequence of hidden states?
+    </li>
+</ol>
+</p>
+<p>
+There are interesting and efficent algorithms for answering each of these
+questions, but I won't describe them here, lest I diverge too far from the
+original purpose of this post, which is to describe the disaggregation task. I
+will, however, mention how each of these is useful for us. The first problem
+is particularly useful for reconstructing signals, because once we have learned
+the parameters, reconstructing a signal becomes as simple as sampling from the
+chain. The second problem is useful for evaluating the best set of parameters
+to use in the model. This is sometimes referred to as "fitting" the model. The
+third problem helps us the most in the context of factorial hidden markov
+models, which I'll describe briefly.
+</p>
+<p>
+Hidden Markov Models representing individual appliances can be merged
+combinatorially to form models representing sets of appliances. We call these
+merged models "Factorial" Hidden markov models. Merging the models is actually
+fairly simple. We merge the appliance states by creating a new state space
+consisting of every possible combination of the individual appliance states,
+then add together the appropriate gaussian emmission states. Then, given a new
+signal which we know to have that particular set of appliances, we can
+determine the sequence of states most likely to have produced a signal of that
+shape. Notice that the complexity of this model increases exponentially in the
+number of appliances, so for our task, we have decided to model only the top
+few appliances. The accuracy of this step is particularly dependent upon the
+accuracy of the estimate of appliances present in the signal.
+</p>
+<p>
+This has been a very brief and sweeping introduction to the methods we are
+using to solve the problem, and I've said almost nothing of the output we are
+working toward producing by the end of the summer. In short, we're working on
+an API for developers to perform simple disaggregation tasks. I'll write more
+on this in the coming weeks.
+</p>
+<br/>
+<br/>
