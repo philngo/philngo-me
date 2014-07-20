@@ -1,6 +1,7 @@
 class BlogController < ApplicationController
 
-  @@posts = ["disaggregation",
+  @@posts = ["hexagons-triangles",
+             "disaggregation",
              "dssg-intro",
              "bezier",
              "intro"] # recent first

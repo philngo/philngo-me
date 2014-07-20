@@ -9,6 +9,8 @@ artwork/turtle.png: artwork/turtle-5ffc5b13b192a5dba54b77795ef1962c.png
 artwork/turtle/index.png: artwork/turtle-5ffc5b13b192a5dba54b77795ef1962c.png
 blog/a-little-slope.png: blog/a-little-slope-a42a1b690f281eb1918f7ad28e899f90.png
 blog/a-little-slope/index.png: blog/a-little-slope-a42a1b690f281eb1918f7ad28e899f90.png
+blog/processing_hex_tri_ease.gif: blog/processing_hex_tri_ease-7c881772db90d15590c91c23a3842076.gif
+blog/processing_hex_tri_ease/index.gif: blog/processing_hex_tri_ease-7c881772db90d15590c91c23a3842076.gif
 bugs/bipalium.jpg: bugs/bipalium-111927c37d7863cd65d0f00ae20b1bdc.jpg
 bugs/bipalium/index.jpg: bugs/bipalium-111927c37d7863cd65d0f00ae20b1bdc.jpg
 bugs/caterpillar.jpg: bugs/caterpillar-45efddd74dcd42457bfdfa8e3876d5f8.jpg
