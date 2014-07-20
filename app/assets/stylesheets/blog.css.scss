@@ -2,8 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 #sidebar {
-  width: 20%;
+  width: 15%;
   position: fixed;
   margin-top: 75px;
   margin-right: 10px;
+}
+
+.blog-content {
+  letter-spacing: -0.3px;
+  font-size: 1.15em;
+  p {
+    margin-bottom:15px;
+  }
 }

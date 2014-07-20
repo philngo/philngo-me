@@ -2,31 +2,45 @@
 <h3>Energy Disaggregation - July 19, 2014</h3>
 <hr/>
 <p>
-My project for DSSG is to increase energy efficiency by using smart meter data
-to do energy disaggregation. Utilities companies are installing smart meters
+Now that the summer is half over, I'll introduce the project I've been working
+on for DSSG. We're disaggregating smart meter data in to generate targetted
+recommendations for increasing energy efficiency in residential homes. I didn't
+know what it meant to "disaggregate" meter data, so I'll explain it.
+</p>
+<p>
+Currently, utilities companies are installing smart meters
 in many communities around the US in order to ease the collection of energy
 usage data. This data is pretty simple; it's often just a single stream of data
 that describes average power usage, sampled once every fifteen minutes. This
 data only says <i>how much</i> energy was used, but it contains no information
-about <i>how</i> it was used. In order to harness this data to develop specific
-recommendations for individuals about how to increase their energy efficiency,
-(while decreasing their bills and easing peak hour energy usage) it would be
-very helpful to know how they currently use power.
+about <i>how</i> it was used.
 </p>
 <p>
-Knowing how the energy was used allows you to answer a much more interesting
-set of questions about how to increase energy efficiency, including these:
-How much energy is each appliance using actually using? Are appliances on when
-they shouldn't be? How much money would you save by turning down your
-thermostat? What is the cost of leaving your pool pump running? What would an
-ROI on a new, more efficient refrigerator be like? There is a lot of
-misinformation floating around about how to save energy. We would much prefer
-a set of targetted, data-backed recommendations.
+In order to harness this data to develop more specific
+recommendations for individuals about how to increase their energy efficiency,
+(while decreasing their bills and easing peak hour energy usage) it would be
+very helpful to know the particular ways in which they currently use power.
+</p>
+<p>
+Primarily, this extra information helps to answer a much more interesting
+set of questions about increasing energy efficiency, including these:
+</p>
+<ul>
+    <li>How much energy is each appliance using actually using?</li>
+    <li>Are appliances on when they shouldn't be?</li>
+    <li>How much money would you save by turning down your thermostat?</li>
+    <li>What is the cost of leaving your pool pump running?</li>
+    <li>What would an ROI on a new, more efficient refrigerator be like?</li>
+</ul>
+<p>
+To be frank, there is a lot of misinformation floating around about how to save
+energy. We would much prefer to help people reduce their energy usage with a
+set of targetted, data-backed recommendations.
 </p>
 <p>
 However, few people have the time, energy, or knowledge it takes to install a
 network of data-collecting kilowatt meters in their home to monitor the power
-intake of each of their appliances. We're taking a totally different approach:
+intake of each of their appliances. So we're taking a totally different approach:
 given a signal and a bunch of data about what individual appliance signals look
 like, we're developing algorithms to automatically "disaggregate" these smart
 meter signals.
